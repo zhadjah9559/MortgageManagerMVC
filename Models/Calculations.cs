@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MortgageManager.Models
 {
-    public class CalculationsTable
+    public class Calculations
     {
         public int Id { get; set; }              //PK
         
@@ -19,21 +19,21 @@ namespace MortgageManager.Models
         public virtual ICollection<CalculationRow> CalculationRows { get; init; } = new HashSet<CalculationRow>();
     }
 
-    public class CalculationsTableValidator : AbstractValidator<CalculationsTable>
+
+    public class CalculationsValidator : AbstractValidator<Calculations>
     {
-        public CalculationsTableValidator()
+        public CalculationsValidator()
         {
             RuleFor(ct => ct.LoanAmount).NotEmpty().WithMessage("Please specify amount");
-            RuleFor(ct => ct.LoanAmount).GreaterThan(0).WithMessage("Must be grater than zero");
+            RuleFor(ct => ct.LoanAmount).GreaterThan(0).WithMessage("Must be greater than zero");
             
 
             RuleFor(ct => ct.Term).NotEmpty().WithMessage("Please specify amount");
-            RuleFor(ct => ct.Term).GreaterThan(0).WithMessage("Must be grater than zero");
+            RuleFor(ct => ct.Term).GreaterThan(0).WithMessage("Must be greater than zero");
 
 
             RuleFor(ct => ct.InterestRate).NotEmpty().WithMessage("Please specify amount");
-            RuleFor(ct => ct.InterestRate).GreaterThan(0).WithMessage("Must be grater than zero");
-
+            RuleFor(ct => ct.InterestRate).GreaterThan(0).WithMessage("Must be greater than zero");
         }
     }
 }
